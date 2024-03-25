@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- header start -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="landingpage.html">Home Page</a></li>
+        <li><a href="searchpage.html">Search</a></li>
+        <li><a href="workspacepage.html">Property & Workspace</a></li>
+
+      </ul>
+    </nav>
+  </header>
+  <!-- header end -->
+
+  <!-- body start -->
+  <div class="body">
+    <table>
+
+
+
+      <tr>
+        <td><label for="email">Email:</label></td>
+        <td><input type="email" id="loginemail" name="email" required></td>
+      </tr>
+      <tr>
+        <td><label for="password">Password:</label></td>
+        <td><input type="password" value="" id="loginpassword"></td>
+      </tr>
+      <tr>
+        <td><label for="role">Role:</label></td>
+        <td>
+          <input type="radio" name="role" id="coworker">
+          <label for="coworker">Coworker</label>
+          <input type="radio" name="role" id="owner">
+          <label for="owner">Owner</label>
+        </td>
+
+      </tr>
+    </table>
+    <br>
+    <p id="loginInfo"></p>
+    <br>
+    <button id="loginbtn">Submit</button>
+    <br>
+  </div>
+  <!-- body end -->
+
+  <!-- footer start -->
+  <footer>
+    <ul>
+      <li class="facebook"> <a href="https://www.facebook.com/"></a></li>
+      <li class="instagram"><a href="https://www.instagram.com/"></a></li>
+      <li class="youtube"><a href="https://www.youtube.com/"></a></li>
+    </ul>
+    <p>©Copyright</p>
+  </footer>
+  <!-- footer end -->
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

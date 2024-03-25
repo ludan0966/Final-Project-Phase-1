@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="landingpage.html">Home Page</a></li>
+        <li><a href="searchpage.html">Search</a></li>
+        <li><a href="workspacepage.html">Property & Workspace</a></li>
+        <div class="login">
+          <li id="login"><a href="loginpage.html">Log In</a></li>
+        </div>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="body">
+    <table>
+      <tr>
+        <td><label for="username">Username:</label></td>
+        <td><input type="text" id="username" name="username"></td>
+      </tr>
+      <tr>
+        <td><label for="email">Email:</label></td>
+        <td><input type="email" id="signupemail" name="email" required></td>
+      </tr>
+      <tr>
+        <td><label for="password">Password:</label></td>
+        <td><input type="password" id="signuppassword" name="password"></td>
+      </tr>
+    </table>
+    <p id="pRight" style="display: none;">Congratulations! You have successfully registered, Please log in!</p>
+    <p id="pWrong" style="display: none;">Sorry, Password length should be at least 6 characters, please try again!</p>
+    <p id="emailError" style="display: none;">Please enter a valid email address.</p>
+    <br>
+    <p id="signupInfo"></p>
+    <br>
+    <button id="signupbtn">Add</button>
+    <br>
+  </div>
+
+  <footer>
+    <ul>
+      <li class="facebook"> <a href="https://www.facebook.com/"></a></li>
+      <li class="instagram"><a href="https://www.instagram.com/"></a></li>
+      <li class="youtube"><a href="https://www.youtube.com/"></a></li>
+    </ul>
+    <p>©Copyright</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

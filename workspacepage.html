@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workspace page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- header start -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="landingpage.html">Home Page</a></li>
+        <li><a href="searchpage.html">Search</a></li>
+        <li><a href="workspacepage.html">Property & Workspace</a></li>
+        <div class="myprofile">
+          <li id="myprofile"><a href="myprofile.html">My Profile</a></li>
+        </div>
+      </ul>
+    </nav>
+  </header>
+  <!-- header end -->
+
+  <!-- body start -->
+  <div class="body">
+    <p>Please add your workspace:</p>
+    <br>
+    <table>
+      <tr>
+        <td><label for="address">Address:</label></td>
+        <td><input type="text" id="address" name="address" required></td>
+      </tr>
+
+      <tr>
+        <td><label for="city">City:</label></td>
+        <td><input type="text" id="city" name="city" required></td>
+      </tr>
+      <tr>
+        <td><label for="state">State:</label></td>
+        <td><input type="text" id="state" name="state" required></td>
+      </tr>
+      <tr>
+        <td><label for="country">Country:</label></td>
+        <td><input type="text" id="country" name="country" required></td>
+      </tr>
+      <tr>
+        <td><label for="amenity">Amenity:</label></td>
+        <td><input type="text" id="amenity" name="amenity" required></td>
+      </tr>
+      <tr>
+        <td><label for="upload">Please upload a photo:</label></td>
+        <td><input type="file" id="photoInput"></td>
+      </tr>
+    </table>
+    <br>
+    <p id="addworkspace"></p>
+    <br>
+    <button id="addButton">Add</button>
+    <br>
+
+  </div>
+  <!-- body end -->
+
+
+  <!-- footer start -->
+  <footer>
+    <ul>
+      <li class="facebook"> <a href="https://www.facebook.com/"></a></li>
+      <li class="instagram"><a href="https://www.instagram.com/"></a></li>
+      <li class="youtube"><a href="https://www.youtube.com/"></a></li>
+    </ul>
+    <p>©Copyright</p>
+  </footer>
+
+  <script>
+
+    let workspaceInfos = JSON.parse(localStorage.getItem('workspaceInfos')) || [];
+
+
+    const addButton = document.querySelector('button');
+    const photoInput = document.getElementById('photoInput');
+    const addworkspaceInfo = document.getElementById('addworkspace');
+
+
+    addButton.addEventListener('click', function () {
+
+      const address = document.getElementById('address').value.trim();
+      const city = document.getElementById('city').value.trim();
+      const state = document.getElementById('state').value.trim();
+      const country = document.getElementById('country').value.trim();
+      const amenity = document.getElementById('amenity').value.trim();
+      const photoFile = photoInput.files[0];
+
+
+      const reader = new FileReader();
+      reader.onload = function () {
+        const photoBase64 = reader.result;
+
+        workspaceInfos.push({
+          address: address,
+          city: city,
+          state: state,
+          country: country,
+          amenity: amenity,
+          photo: photoBase64
+        });
+
+        localStorage.setItem('workspaceInfos', JSON.stringify(workspaceInfos));
+
+        addworkspaceInfo.innerHTML = 'Your information has been saved.';
+
+        document.getElementById('address').value = '';
+        document.getElementById('city').value = '';
+        document.getElementById('state').value = '';
+        document.getElementById('country').value = '';
+        document.getElementById('amenity').value = '';
+      };
+
+      reader.readAsDataURL(photoFile);
+    });
+
+  </script>
+
+
+
+</body>
+
+</html>

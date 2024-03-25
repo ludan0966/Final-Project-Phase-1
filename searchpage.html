@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- header start -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="landingpage.html">Home Page</a></li>
+        <li><a href="searchpage.html">Search</a></li>
+        <li><a href="workspacepage.html">Property & Workspace</a></li>
+
+      </ul>
+    </nav>
+  </header>
+  <!-- header end -->
+
+  <!-- body start -->
+  <div class="body">
+    <p>Look for the workspace that you are interested in:</p>
+    <br>
+    <select name="" id="search">
+      <option value="city">City</option>
+      <option value="state">State</option>
+      <option value="country">Country</option>
+
+    </select>
+    <input type="text">
+    <button>Search</button>
+    <div id="displayContainer"></div>
+
+
+  </div>
+  <!-- body end -->
+
+  <!-- footer start -->
+  <footer>
+    <ul>
+      <li class="facebook"> <a href="https://www.facebook.com/"></a></li>
+      <li class="instagram"><a href="https://www.instagram.com/"></a></li>
+      <li class="youtube"><a href="https://www.youtube.com/"></a></li>
+    </ul>
+    <p>©Copyright</p>
+  </footer>
+  <!-- footer end -->
+  <script>
+
+    let workspaceInfos = JSON.parse(localStorage.getItem('workspaceInfos')) || [];
+
+
+    const searchButton = document.querySelector('button');
+    const searchSelect = document.getElementById('search');
+    const searchInput = document.querySelector('input');
+
+
+    searchButton.addEventListener('click', function () {
+
+      const selectedOption = searchSelect.value;
+      const inputValue = searchInput.value.trim();
+
+
+      let matchedInfos = [];
+
+
+      workspaceInfos.forEach(function (info) {
+
+        if (info[selectedOption].toLowerCase() === inputValue.toLowerCase()) {
+
+          matchedInfos.push(info);
+        }
+      });
+
+
+      displayMatchedInfos(matchedInfos);
+    });
+
+
+    function displayMatchedInfos(matchedInfos) {
+
+      const displayContainer = document.getElementById('displayContainer');
+
+
+      displayContainer.innerHTML = '';
+
+
+      if (matchedInfos.length === 0) {
+        displayContainer.innerHTML = 'No matching information found.';
+        return;
+      }
+
+
+      const ul = document.createElement('ul');
+
+
+      matchedInfos.forEach(function (info) {
+
+        const li = document.createElement('li');
+
+
+        const addressP = document.createElement('p');
+        addressP.textContent = `Address: ${info.address}`;
+        li.appendChild(addressP);
+
+        const cityP = document.createElement('p');
+        cityP.textContent = `City: ${info.city}`;
+        li.appendChild(cityP);
+
+        const stateP = document.createElement('p');
+        stateP.textContent = `State: ${info.state}`;
+        li.appendChild(stateP);
+
+        const countryP = document.createElement('p');
+        countryP.textContent = `Country: ${info.country}`;
+        li.appendChild(countryP);
+
+        const amenityP = document.createElement('p');
+        amenityP.textContent = `Amenity: ${info.amenity}`;
+        li.appendChild(amenityP);
+
+
+        const img = document.createElement('img');
+        img.src = info.photo;
+        img.alt = 'Workspace Photo';
+        img.style.width = '200px';
+        li.appendChild(img);
+        li.appendChild(document.createElement('br'));
+        li.appendChild(document.createElement('br'));
+
+
+
+        ul.appendChild(li);
+      });
+
+
+      displayContainer.appendChild(ul);
+    }
+
+
+  </script>
+
+</body>
+
+</html>
